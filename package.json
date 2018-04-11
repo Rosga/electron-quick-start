@@ -4,7 +4,12 @@
   "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "npm run-script build_native && cross-env NODE_ENV=development gulp build && cross-env NODE_ENV=development gulp",
+    "postinstall": "npm run-script rebuild_native && npm run-script appinstall && gulp copy:node_modules && npm run-script rebuild",
+    "rebuild": "cd build && npm rebuild --runtime=electron --target=1.8.4 --disturl=https://atom.io/download/atom-shell",
+    "appinstall": "cd app && npm install && cd ..",
+    "rebuild_native": "node-gyp rebuild --target=1.8.4 --dist-url=https://atom.io/download/electron",
+    "build_native": "node-gyp build --target=1.8.4 --dist-url=https://atom.io/download/electron"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
@@ -17,6 +22,9 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^1.8.4"
+    "cross-env": "^5.1.4",
+    "electron": "^1.8.4",
+    "gulp": "^3.9.1",
+    "nan": "^2.10.0"
   }
 }

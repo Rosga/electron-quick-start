@@ -11,6 +11,15 @@
     Chromium <script>document.write(process.versions.chrome)</script>,
     and Electron <script>document.write(process.versions.electron)</script>.
 
+    <div class="buttons">
+        <button class="start-hook">Start Hook</button>
+        <button class="stop-hook">Stop Hook</button>
+        <button class="open-dialog">Open Dialog</button>
+    </div>
+
+    <h2>Mouse position:</h2>
+    <p>left: <strong class="left"></strong>; top: <strong class="top"></strong></p>
+
     <script>
       // You can also require other files to run in this process
       require('./renderer.js')
